@@ -1,4 +1,4 @@
-# Détecteur de doublons pour le site vigie du mensonge
+# Détecteur de doublons pour le site vigiedumensonge.fr
 
 Des scripts permettant de detecter des doublons sur le site vigie du mensonge. Utilise TF-IDF pour transformer les posts en vecteurs, et la similarité cosinus pour trouver les posts similaires.
 
