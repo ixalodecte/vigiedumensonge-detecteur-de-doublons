@@ -38,7 +38,7 @@ def cluster_posts(posts, stem=False, eps=0.5, min_samples=1):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--folder", default="data", help="Dossier contenant les fichiers JSON")
-    parser.add_argument("--eps", type=float, default=0.5, help="epsilon pour dbscan")
+    parser.add_argument("--sim", type=float, default=0.5, help="similarité minimal pour l'ajout d'un post dans un cluster. Compris entre 0 et 1")
     parser.add_argument("--stem", action="store_true")
     args = parser.parse_args()
 
@@ -61,7 +61,7 @@ def main():
             })
 
     #Clustering, puis affichage
-    clusters = cluster_posts(posts, stem=args.stem, eps=args.eps)
+    clusters = cluster_posts(posts, stem=args.stem, eps=1-args.sim)
     end = time.time()
     i = 1
     for label, posts in clusters.items():
