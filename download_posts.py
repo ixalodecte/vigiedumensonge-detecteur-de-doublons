@@ -5,7 +5,7 @@ import os
 
 # On commence par supprimer tout ce qu'il y a dans data/
 for fname in os.listdir("data"):
-    if fname.split(".")[1] == "json":
+    if fname.split(".")[-1] == "json":
         os.remove("data/" + fname)
 
 for i in range(200):  # Augmenter ce nombre s'il y a plus de mensonge sur le site
