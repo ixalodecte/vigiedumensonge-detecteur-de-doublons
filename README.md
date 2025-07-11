@@ -25,8 +25,8 @@ python3 download_posts.py
 ```
 le script va charger les posts, les parser et les stocker dans le dossier "data/".
 
-### Trouver les posts les plus similaires
-Le script ```similar_post.py``` va chercher les n posts les plus similaire à un post donné parmi les posts présent dans le dossier "data". Il faut donner l'id du mensonge, qui correspond au nombre dans l'url sur le site vigiedumensonge. Exemple d'utilisation:
+### Trouver les posts similaires
+Le script ```similar_post.py``` va chercher les n posts les plus similaires à un post donné parmi les posts présents dans le dossier "data". Il faut donner l'id du mensonge, qui correspond au nombre dans l'url sur le site vigiedumensonge. Exemple d'utilisation:
 ```
 $ python3 similar_post.py 6 --top 7
 
@@ -46,10 +46,10 @@ Temps d'exécution : 0.1507
 ```
 
 ### Créer des groupes de post similaire (clustering)
-Le script ```cluster_posts.py``` réalise un clustering des posts, pour regrouper les posts similaire grace à l'algorithme DBSCAN. Un paramètre ```--eps``` contrôle la similarité minimale entre deux posts pour qu'ils soient considérés comme des doublons. Exemple:
+Le script ```cluster_posts.py``` réalise un clustering des posts, pour regrouper les posts similaires grace à l'algorithme DBSCAN. Un paramètre ```--sim``` contrôle la similarité minimale entre deux posts pour qu'ils soient considérés comme des doublons. Exemple:
 
 ```
-$ python3 cluster_posts.py --stem --eps 0.5
+$ python3 cluster_posts.py --stem --sim 0.5
 
 Nombre de clusters détectés : 13
 
