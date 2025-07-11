@@ -46,7 +46,7 @@ Temps d'exécution : 0.1507
 ```
 
 ### Créer des groupes de post similaire (clustering)
-Le script ```cluster_posts.py``` réalise un clustering des posts, pour regrouper les posts similaire grace à l'algorithme DBSCAN. Exemple:
+Le script ```cluster_posts.py``` réalise un clustering des posts, pour regrouper les posts similaire grace à l'algorithme DBSCAN. Un paramètre ```--eps``` contrôle la similarité minimale entre deux posts pour qu'ils soient considérés comme des doublons. Exemple:
 
 ```
 $ python3 cluster_posts.py --stem --eps 0.5
