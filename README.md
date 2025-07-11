@@ -26,7 +26,7 @@ python3 download_posts.py
 le script va charger les posts, les parser et les stocker dans le dossier "data/".
 
 ### Trouver les posts les plus similaires
-Le script ```similar_post.py``` va chercher les n posts les plus similaire à un post donné parmi les posts présent dans le dossier "data". Exemple d'utilisation:
+Le script ```similar_post.py``` va chercher les n posts les plus similaire à un post donné parmi les posts présent dans le dossier "data". Il faut donner l'id du mensonge, qui correspond au nombre dans l'url sur le site vigiedumensonge. Exemple d'utilisation:
 ```
 $ python3 similar_post.py 6 --top 7
 
