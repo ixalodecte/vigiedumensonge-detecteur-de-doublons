@@ -12,6 +12,7 @@ pip install -r requirements.txt
 il faut ensuite télécharger les packages suivant pour nltk. Pour cela, dans un terminal python:
  
 ```python
+import nltk
 nltk.download('stopwords')  # Contient les stopwords français (taille : 36 ko)
 nltk.download('punkt_tab')  # Permet la tokenisation du texte (extraction des mots) (taille : 4 Mo)
 ```
