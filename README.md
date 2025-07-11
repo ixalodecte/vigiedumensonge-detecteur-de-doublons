@@ -5,8 +5,8 @@ Des scripts permettant de detecter des doublons sur le site vigie du mensonge. U
 ## Installation
 Installer les packages nécessaire:
 ```bash
-git clone https://github.com/ixalodecte/vigiedumensonge-detecteur-de-doublon
-cd vigiedumensonge-detecteur-de-doublon
+git clone https://github.com/ixalodecte/vigiedumensonge-detecteur-de-doublons
+cd vigiedumensonge-detecteur-de-doublons
 pip install -r requirements.txt
 ```
 il faut ensuite télécharger les packages suivant pour nltk. Pour cela, dans un terminal python:
