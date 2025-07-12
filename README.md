@@ -1,15 +1,15 @@
 # Détecteur de doublons pour le site vigiedumensonge.fr
 
-Des scripts permettant de detecter des doublons sur le site vigie du mensonge. Utilise TF-IDF pour transformer les posts en vecteurs, et la similarité cosinus pour trouver les posts similaires.
+Script conçu pour détecter les doublons sur le site Vigie du Mensonge. Il utilise un algorithme simple qui repère les mots clés importants d’un texte (TF-IDF), puis compare ce texte aux autres à l’aide d’une mesure de similarité.
 
 ## Installation
-Installer les packages nécessaire:
+Installer les packages nécessaires:
 ```bash
 git clone https://github.com/ixalodecte/vigiedumensonge-detecteur-de-doublons
 cd vigiedumensonge-detecteur-de-doublons
 pip install -r requirements.txt
 ```
-il faut ensuite télécharger les packages suivant pour nltk. Pour cela, dans un terminal python:
+il faut ensuite télécharger les packages suivants pour nltk. Pour cela, dans un terminal python:
  
 ```python
 import nltk
