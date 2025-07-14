@@ -1,7 +1,8 @@
-from bs4 import BeautifulSoup
 import requests
 import json
 import os
+
+from bs4 import BeautifulSoup
 
 # On commence par supprimer tout ce qu'il y a dans data/
 for fname in os.listdir("data"):
@@ -12,11 +13,10 @@ for i in range(200):  # Augmenter ce nombre s'il y a plus de mensonge sur le sit
     url = f"https://vigiedumensonge.fr/e/{i}"
 
     response = requests.get(url)
-    if response.status_code !=200:
+    if response.status_code != 200:
         print(f"Mensonge {i} : status {response.status_code}")
         continue
     response.raise_for_status()  # Lève une erreur si le téléchargement échoue
-
 
     soup = BeautifulSoup(response.text, "html.parser")
 
@@ -32,18 +32,20 @@ for i in range(200):  # Augmenter ce nombre s'il y a plus de mensonge sur le sit
     faits = faits_title.find_next("p").get_text("\n", strip=True) if faits_title else ""
 
     # Date d'ajout
-    date_elem = soup.find("p", string=lambda text: text and text.startswith("Ajouté le"))
+    date_elem = soup.find(
+        "p", string=lambda text: text and text.startswith("Ajouté le")
+    )
     date_ajout = date_elem.get_text(strip=True) if date_elem else ""
     donnees = {
-        'titre': titre,
-        'date_ajout': date_ajout,
-        'citation': citation,
-        'faits': faits
+        "titre": titre,
+        "date_ajout": date_ajout,
+        "citation": citation,
+        "faits": faits,
     }
     print(f" - {i} : {titre}")
 
     # Sauvegarde JSON
-    with open(f'data/mensonge_{i}.json', 'w', encoding='utf-8') as f:
+    with open(f"data/mensonge_{i}.json", "w", encoding="utf-8") as f:
         json.dump(donnees, f, ensure_ascii=False, indent=4)
     if 0:
         # Affichage
