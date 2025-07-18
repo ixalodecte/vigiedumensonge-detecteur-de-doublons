@@ -1,12 +1,13 @@
 import os
 import argparse
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.metrics.pairwise import cosine_similarity
-#import spacy
 import re
 import time
 from utils import preprocess, load_post
 
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
+
+# import spacy
 
 
 def find_similar_posts(posts, index, top_n=5):
@@ -27,9 +28,17 @@ def find_similar_posts(posts, index, top_n=5):
 def main():
     parser = argparse.ArgumentParser(description="Trouver les posts similaires")
     parser.add_argument("index", type=int, help="Index du post de référence (ex: 1)")
-    parser.add_argument("--folder", type=str, default="data", help="Dossier contenant les fichiers JSON")
-    parser.add_argument("--top", type=int, default=5, help="Nombre de posts similaires à afficher")
-    parser.add_argument("--stem", action="store_true", help="Activer le stemming avec FrenchStemmer de nltk")
+    parser.add_argument(
+        "--folder", type=str, default="data", help="Dossier contenant les fichiers JSON"
+    )
+    parser.add_argument(
+        "--top", type=int, default=5, help="Nombre de posts similaires à afficher"
+    )
+    parser.add_argument(
+        "--stem",
+        action="store_true",
+        help="Activer le stemming avec FrenchStemmer de nltk",
+    )
 
     args = parser.parse_args()
     folder = args.folder
@@ -60,11 +69,11 @@ def main():
     results = find_similar_posts(posts, index, top)
     end = time.time()
 
-    print(f"Post de référence : \n # {filenames[index]}\t| \"{titles[index]}\"")
+    print(f'Post de référence : \n # {filenames[index]}\t| "{titles[index]}"')
     print()
     print("Posts similaires :")
     for i, score in results:
-        print(f" - {filenames[i]}\t| similarité={score:.4f}    | \"{titles[i]}\"")
+        print(f' - {filenames[i]}\t| similarité={score:.4f}    | "{titles[i]}"')
     print()
     print(f"Temps d'exécution : {(end-start):.4f}")
 
