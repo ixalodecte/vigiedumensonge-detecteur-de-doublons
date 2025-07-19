@@ -1,6 +1,7 @@
 import json
 import unicodedata
 import string
+import re
 
 from nltk.stem.snowball import FrenchStemmer
 from nltk.tokenize import word_tokenize
@@ -10,24 +11,25 @@ from nltk.corpus import stopwords
 # nltk.download('punkt_tab')
 # nltk.download('stopwords')
 
+stop_words = set(stopwords.words('french'))
+stop_words.add("mensonge")
+stop_words.add("edit")
+stop_words.add("doublon")
+
+
+punct_set = set(string.punctuation)
+stop_words = set.union(punct_set, stop_words)
 
 def preprocess(text, stem=False):
     text = (
         unicodedata.normalize("NFKD", text).encode("ascii", "ignore").decode("utf-8")
     )  # Supprimer tout les accents pour réduire l'impact des fautes sur les accents
-    tokens = word_tokenize(text, language="french")  # Tokenization
-    tokens = [token.lower() for token in tokens]  # Passer tout en minuscule
+    text = text.lower()  # Passer tout en minuscule
+    tokens = re.findall(r"\w+|[^\w\s]", text, re.UNICODE)  # Tokenization
 
     # Suppressions des stops words, et des token composé uniquement de punctuation
-    stop_words = set(stopwords.words("french"))
-    stop_words.add("mensonge")
-    stop_words.add("edit")
-    stop_words.add("doublon")
-    tokens = [
-        t
-        for t in tokens
-        if t not in stop_words and not all(c in string.punctuation for c in t)
-    ]
+    tokens = [t for t in tokens if t not in stop_words]
+
 
     if stem:
         stemmer = FrenchStemmer()
